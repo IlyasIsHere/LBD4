@@ -112,40 +112,40 @@
     $notes = $info["Notes"];
 
     ?>
-    <table class="table table-bordered w-25">
-        <tr>
-            <th>Code</th>
-            <td colspan="2">
-                <?php echo $code; ?>
-            </td>
-        </tr>
-        <tr>
-            <th>Nom</th>
-            <td colspan="2">
-                <?php echo $nom; ?>
-            </td>
-        </tr>
-        <tr>
-            <th>Prénom</th>
-            <td colspan="2">
-                <?php echo $prenom; ?>
-            </td>
-        </tr>
-        <tr>
-            <th rowspan="17" class="align-middle">Notes</th>
+    <div>
+    <table class="table table-sm table-bordered text-center align-middle fs-6 m-3" style="width: 500px;">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th colspan="16">Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2"><?php echo $code; ?></td>
+                <td rowspan="2"><?php echo $nom; ?></td>
+                <td rowspan="2"><?php echo $prenom; ?></td>
+                <?php 
+                foreach ($notes as $module => $note) {
+                echo "<th>$module</th>"; }
+                ?>
+
+                
+            </tr>
+            <tr>
                 <?php
                 foreach ($notes as $module => $note) {
-                ?> 
-                <tr>
-                    <th><?php echo $module ?></th>
-                    <td><?php echo $note ?></td>
-                </tr>
-                <?php
+                    echo "<td>$note</td>" ; 
                 }
                 ?>
-                
-        </tr>
+            </tr>
+        </tbody>
+
+        
     </table>
+    </div>
 
 </body>
 
