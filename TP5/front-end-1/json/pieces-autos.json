@@ -1,0 +1,45 @@
+[
+    {
+        "id": 1,
+        "nom": "Ampoule LED",
+        "prix": 60,
+        "categorie": "Optiques",
+        "description": "Les avantages des ampoules LED pour voitures sont leur luminosité accrue et leur consommation d'énergie réduite.",
+        "disponibilite": false,
+        "image": "images/ampoule-led.png"
+    },
+    {
+        "id": 2,
+        "nom": "Plaquettes de frein (x4)",
+        "prix": 40,
+        "categorie": "Freinage",
+        "description": "Les plaquettes de frein de qualité offrent une meilleure performance de freinage, une usure réduite, une durée de vie plus longue et une réduction de la production de poussière de frein.",
+        "disponibilite": true,
+        "image": "images/plaquettes-frein.png"
+    },
+    {
+        "id": 3,
+        "nom": "Ampoule boîte à gants",
+        "prix": 5.49,
+        "categorie": "Optiques",
+        "description": "Une ampoule de boîte à gants est une petite source lumineuse pour éclairer l'intérieur de la boîte à gants d'une voiture. Elle peut être remplacée et est généralement soit une ampoule LED ou une ampoule traditionnelle.",
+        "disponibilite": true,
+        "image": "images/ampoule-boite-a-gants.png"
+    },
+    {
+        "id": 4,
+        "nom": "Liquide de frein",
+        "prix": 9.60,
+        "categorie": "Freinage",
+        "disponibilite": false,
+        "image": "images/liquide-frein.png"
+    },
+    {
+        "id": 5,
+        "nom": "Balai d'essuie-glace",
+        "prix": 29.10,
+        "description": "Un balai d'essuie-glace est une pièce mobile du système d'essuie-glace d'une voiture, qui est composé d'un bras métallique et d'une lame en caoutchouc pour nettoyer le pare-brise en mouvement.",
+        "disponibilite": true,
+        "image": "images/balai-essuie-glace.png"
+    }
+]

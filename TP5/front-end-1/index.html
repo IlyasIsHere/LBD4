@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Auto Parts</title>
+		<link rel="stylesheet" href="css/styles.css">
+		<script type="module" src="js/pieces.js"></script>
+	</head>
+	<body>
+		<header>
+			<img src="images/logo-auto-parts.png" alt="LOGO">
+			<h1>Auto Parts</h1>
+		</header>
+		<main>
+			<!-- Menu de recherche -->
+			<section class="filtres">
+				<h3>Filtres</h3>
+				<button class="btn-trier">Trier (par prix croissant)</button>
+				<button class="btn-trier-desc">Trier (par prix décroissant)</button>
+				<button class="btn-filtrer">Filtrer les pièces non abordables</button>
+				<button class="btn-filtrer-dispo">Filtrer par article disponible</button>
+				<label>Trier par prix:</label>
+				<input type="range" min="5" max="100" step="5" id="range-input">
+				<input type="text" id="range-value" disabled>
+			</section>
+
+			<!-- Fiches produits -->
+			<section class="fiches">
+			</section>
+		</main>
+	</body>
+</html>
