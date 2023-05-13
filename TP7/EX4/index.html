@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/b72eda9c8f.js" crossorigin="anonymous"></script>
+    <style>
+        .input-danger {
+            outline: solid red !important;
+        }
+    </style>
+</head>
+<body>
+  <form class="form container mt-5">
+      <label for="username-input" class="form-label d-block">Check if username is available</label>
+      <input min="5" class="form-control col-5 d-inline-block" style="padding-right: 35px;" type="text" id="username-input" onkeyup="checkUsername(this.value);">
+      <i id="icon-success" class="fa-solid fa-check" style="color: #00ad03; position: relative; right: 30px;"></i>
+      <i id="icon-danger" class="fa-solid fa-circle-xmark fa-lg" style="color: #ff0000; position: relative; right: 30px;"></i>
+      <span id="info-danger" class="alert-danger">This username is already taken</span>
+      <span id="info-success" class="alert-success">This username is available</span>
+      <span id="info-input" class="alert-danger">The username must have at least 5 characters</span>
+  </form>
+
+  <script>
+      const info_danger = document.getElementById("info-danger");
+      const icon_danger = document.getElementById("icon-danger");
+      const info_success = document.getElementById("info-success");
+      const icon_success = document.getElementById("icon-success");
+      const info_input = document.getElementById("info-input");
+      const username_input = document.getElementById("username-input");
+
+      hideAlerts();
+
+      function hideAlerts() {
+          info_danger.style.display = "none";
+          info_success.style.display = "none";
+          icon_danger.style.display = "none";
+          icon_success.style.display = "none";
+          info_input.style.display = "none";
+          if (username_input.classList.contains("input-danger")) {
+              username_input.classList.remove("input-danger");
+          }
+      }
+
+      function checkUsername(username) {
+        if (username.length < 5) {
+            hideAlerts();
+            username_input.classList.add("input-danger");
+            info_input.style.display = "inline";
+        } else {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    hideAlerts();
+                    if (this.responseText == "yes") {
+                        info_success.style.display = "inline";
+                        icon_success.style.display = "inline";
+                    } else if (this.responseText == "no") {
+                        info_danger.style.display = "inline";
+                        icon_danger.style.display = "inline";
+                    }
+                }
+            }
+            xhr.open("POST", "process.php", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send("inputusername=" + username);
+        }
+      }
+  </script>
+</body>
+</html>

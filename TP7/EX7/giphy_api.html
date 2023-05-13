@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Images & GIFs Search</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <style>
+        img {
+            border: solid white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <input type="text" placeholder="Search for images and GIFs" class="form-control" onkeyup="showImages(this.value);">
+        <div class="container d-flex flex-row flex-wrap mt-4" id="imgs-container"></div>
+    </div>
+
+    <script>
+        const imgs_container = document.getElementById("imgs-container");
+
+        function showImages(str) {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    imgs_container.innerHTML = "";
+                    var data = JSON.parse(xhr.responseText).data;
+                    for (var i=0; i<data.length; i++) {
+                        var img_url = data[i].images.fixed_height.url;
+                        var img = document.createElement("img");
+                        img.setAttribute("src", img_url);
+                        imgs_container.appendChild(img);
+                    }
+                }
+            };
+            xhr.open("GET", "https://api.giphy.com/v1/gifs/search?api_key=ifV2AAh2O6tADrwMipZgcp18ZpPYr4NU&q=" + str + "&limit=25&offset=0&rating=g", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send();
+        }
+    </script>
+
+</body>
+</html>

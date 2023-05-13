@@ -1,0 +1,17 @@
+body {
+    background-image: url("small-toy-plane-wood.jpg");
+    background-size: cover;
+}
+
+#main-container {
+    backdrop-filter: blur(9px);
+    padding-top: 2px !important;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 5em;
+    margin-top: -30px;
+    border: solid;
+    border-radius: 25px;
+}
